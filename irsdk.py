@@ -250,6 +250,14 @@ class IRSDK:
         return self._header.session_info_update
 
     @property
+    def var_buffer_update(self):
+        var_buf_latest = self._var_buffer_latest
+        if var_buf_latest:
+            return var_buf_latest.tick_count
+        else:
+            return -1
+
+    @property
     def var_headers_names(self):
         if self.__var_headers_names is None:
             self.__var_headers_names = [var_header.name for var_header in self._var_headers]
